@@ -1,10 +1,11 @@
 # extract-esef
-Program that extracts facts from ESEF iXBRL reports using Arelle.
+Program that extracts facts from ESEF iXBRL financial reports using Arelle.
 Run program through the command:
-python3 main.py
+`python3 main.py`
 
-To download filings, run the download_filings.py.
+To download filings, run:
+`python3 download_filings.py`
 
 Many components are inspired by the Pyesef library: https://github.com/ggravlingen/pyesef
 
-Program written by Robert Minasyan and Pim Erlandsson
+Written by Robert Minasyan and Pim Erlandsson

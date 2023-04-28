@@ -3,15 +3,13 @@ from tablesIS import revenue_table
 
 # contains the key names that are of interest
 fact_table = {
-    "file": None,
-    "value": None,
-    "name": None,
-    #"QName": None,
-    "entity": None,
-    "startDate": None,
-    "endDate": None,
-    "measure": None
-    #"unitRef": None
+    "file": str,
+    "value": str,
+    "name": str,
+    "entity": str,
+    "startDate": str,
+    "endDate": str,
+    "measure": str
 }
 
 # contains the most important concepts
@@ -22,7 +20,7 @@ matched_table = {
 
 # contains sub_strings and its corresponding table
 # where the translation can be found
-sub_strings = {
+sub_strings_table = {
     "Revenue" : revenue_table
     #"CostOfSales" : None
 }

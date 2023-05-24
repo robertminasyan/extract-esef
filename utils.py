@@ -49,7 +49,6 @@ def to_csv(facts_mapped, facts):
                 continue
 
 def check_period(startDate, endDate):
-    print(startDate, endDate)
     financial_year_start = datetime.strptime("01-01", "%m-%d")
     financial_year_end = datetime.strptime("12-31", "%m-%d")
 
@@ -63,7 +62,7 @@ def check_period(startDate, endDate):
 
 
 def write_fail(key, entity):
-    # print to log that it failed mapping
+    # print to text file that a mapping failed
     with open('failedmappings.txt', mode='a') as file:
 
         file.write(f"'{key}' for '{entity}' did not map, please fix\n")

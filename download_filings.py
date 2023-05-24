@@ -1,4 +1,5 @@
 """Helper function to download a XBRL-package."""
+"""Modified version of Pyesef Download function"""
 from dataclasses import dataclass
 import json
 import os
@@ -74,7 +75,7 @@ def _cleanup_package_dict(identifier_map: IdentifierType) -> list[Filing]:
     return data_list
 
 
-def download_packages() -> None:
+def download_packages(tr, te) -> None:
     """
     Download XBRL-packages from XBRL.org.
 
@@ -112,13 +113,14 @@ def download_packages() -> None:
     print(f"{len(data_list)} items found")
 
     for idx, item in enumerate(data_list):
-        if idx < 40:
+        if idx < te:
             _download_package_TE(item)
         else:
-            if(idx == 40):
+            if(idx == (te+tr)):
                 break
-            _download_package_TE(item)
-
+            _download_package_TR(item)
+    print(tr, "training filings downloaded")
+    print(te, "testing filings donwloaded")
 
 def _download_package_TR(filing: Filing) -> None:
     """Download a package and store it the archive-folder."""
@@ -154,4 +156,6 @@ def _download_package_TE(filing: Filing) -> None:
         for chunk in req.iter_content(chunk_size=2048):
             _file.write(chunk)
 
-download_packages()
+tr = int(input("How many filings for training do you want to download: "))
+te = int(input("How many filings for testing do you want to download: "))
+download_packages(tr, te)

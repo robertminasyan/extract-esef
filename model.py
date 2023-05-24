@@ -16,7 +16,7 @@ FILE_ENDING_ZIP = ".zip"
 
 # specify path to archives
 # here testing or training archive should be stated
-PATH_ARCHIVES = archives = os.path.join(".", "archives_testing")
+#PATH_ARCHIVES = archives = os.path.join(".", "archives_testing")
 PATH_PARSED = parsed = os.path.join(".", "parsed")
 PATH_FAILED = parsed = os.path.join(".", "error")
 
@@ -81,7 +81,7 @@ def _load_esef_xbrl_model(zip_file_path: str, cntlr: Controller) -> ModelXbrl:
 # inspired by pyesef
 # will load into xbrl model and 
 # extend the facts list
-def read_and_save_filings():
+def read_and_save_filings(PATH_ARCHIVES):
     start = time.time()
     idx = 0
     cntlr = Controller()

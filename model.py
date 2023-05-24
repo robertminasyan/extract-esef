@@ -16,7 +16,7 @@ FILE_ENDING_ZIP = ".zip"
 
 # specify path to archives
 # here testing or training archive should be stated
-PATH_ARCHIVES = archives = os.path.join(".", "archives_training")
+PATH_ARCHIVES = archives = os.path.join(".", "archives_testing")
 PATH_PARSED = parsed = os.path.join(".", "parsed")
 PATH_FAILED = parsed = os.path.join(".", "error")
 

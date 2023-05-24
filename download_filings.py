@@ -112,10 +112,10 @@ def download_packages() -> None:
     print(f"{len(data_list)} items found")
 
     for idx, item in enumerate(data_list):
-        if idx < 60:
-            _download_package_TR(item)
+        if idx < 40:
+            _download_package_TE(item)
         else:
-            if(idx == 61):
+            if(idx == 40):
                 break
             _download_package_TE(item)
 

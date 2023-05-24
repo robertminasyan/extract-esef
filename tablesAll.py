@@ -21,6 +21,7 @@ matched_table = {
 # contains sub_strings and its corresponding table
 # where the translation can be found
 sub_strings_table = {
-    "Revenue" : revenue_table
-    #"CostOfSales" : None
+    "Revenue" : revenue_table,
+    "Net" : revenue_table,
+    "Income" : revenue_table
 }

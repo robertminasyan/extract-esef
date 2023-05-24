@@ -1,7 +1,24 @@
 # here translation tables for each necessary IS fact is kept
 revenue = "Revenue"
 
+#results training:
+
+
 revenue_table = {
+
+
+    #Training
+    "RevenueFromRenderingOfPassengerTransportServicesAncillary" : revenue,
+    "RevenueFromContractsWithCustomers" : revenue,
+    "RevenueFromSaleOfEnergy" : revenue,
+    "CharterRevenue" : revenue, # 8
+    "RevenueFromSaleOfOilAndGasProducts" : revenue, # 11
+    "NetSales" : revenue, # 13
+    #EndOfTraining
+
+    "OtherRevenue" : revenue,
+
+
     "RentalIncome" : revenue,
     "RentalIncomeFromInvestmentProperty" : revenue,
 
@@ -56,5 +73,4 @@ revenue_table = {
     "RevenueFromRenderingOfServicesRelatedPartyTransactions" : revenue,
 
     "CirculationRevenue": revenue
-    #"RevenueFromContractsWithCustomers":"Revenue" # Special case
 }

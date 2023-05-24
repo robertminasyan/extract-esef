@@ -1,6 +1,8 @@
 import csv
 from pathlib import Path
 import os
+from datetime import datetime
+
 
 # specify path to archives
 # here testing or training archive should be stated
@@ -22,8 +24,12 @@ def to_csv(facts_mapped, facts):
             namerow = row["name"]
             measure = row["measure"]
             array = measure.split(":")
-            writer.writerow({"NCRname": namerow[0], "name": namerow[1], "entity": row["entity"], "value": row["value"], "measure": array[1], "startDate": row["startDate"], "endDate": row["endDate"]})
-
+            if(row.get("startDate")==None or row.get("endDate")==None):
+                continue
+            if(check_period(row.get("startDate"), row.get("endDate"))):
+                writer.writerow({"NCRname": namerow[0], "name": namerow[1], "entity": row["entity"], "value": row["value"], "measure": array[1], "startDate": row["startDate"], "endDate": row["endDate"]})
+            else:
+                continue
     with open('outputallfacts.csv', mode='a', newline='') as file:
 
         # Create a writer object
@@ -35,7 +41,26 @@ def to_csv(facts_mapped, facts):
 
         # Write the data rows
         for row in facts:
-            writer.writerow({"name": row.get("name"), "entity": row.get("entity"), "value": row.get("value"), "measure": row.get("measure"), "startDate": row.get("startDate"), "endDate": row.get("endDate")})
+            if((row.get("startDate")==None) or (row.get("endDate")==None)):
+                continue
+            if(check_period(row.get("startDate"), row.get("endDate"))):
+                writer.writerow({"name": row.get("name"), "entity": row.get("entity"), "value": row.get("value"), "measure": row.get("measure"), "startDate": row.get("startDate"), "endDate": row.get("endDate")})
+            else:
+                continue
+
+def check_period(startDate, endDate):
+    print(startDate, endDate)
+    financial_year_start = datetime.strptime("01-01", "%m-%d")
+    financial_year_end = datetime.strptime("12-31", "%m-%d")
+
+    start_date = datetime.strptime(startDate, "%Y-%m-%d")
+    end_date = datetime.strptime(endDate, "%Y-%m-%d")
+    if ((start_date.month == financial_year_start.month and end_date.month == financial_year_end.month) or (start_date.month == financial_year_start.month and end_date.month == financial_year_start.month)):
+        return True
+    else:
+        return False
+
+
 
 def write_fail(key, entity):
     # print to log that it failed mapping
